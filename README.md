@@ -113,5 +113,5 @@ Please cite the accompanying paper:
 ```
 
 The Python implementation, tests, examples and documentation use the [MIT license](LICENSE).
-Original MATLAB files retain their existing notices; see [provenance](legacy/README.md).
+See [NOTICE](NOTICE) for license scope and [legacy provenance](legacy/README.md).
 For questions and contributions, see [CONTRIBUTING.md](CONTRIBUTING.md).

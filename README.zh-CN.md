@@ -73,5 +73,5 @@ python -m experiments.plot_evidence
 
 使用本程序请引用论文，完整 BibTeX 见 [English README](README.md#citation-and-license)，
 机器可读引用见 [CITATION.cff](CITATION.cff)。
-Python 实现、测试、示例和文档采用 [MIT 许可证](LICENSE)；原 MATLAB 文件保留原有声明。
+Python 实现、测试、示例和文档采用 [MIT 许可证](LICENSE)，适用范围见 [NOTICE](NOTICE)。
 问题反馈与贡献方式见 [CONTRIBUTING.md](CONTRIBUTING.md)。

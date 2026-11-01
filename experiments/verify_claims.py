@@ -197,18 +197,21 @@ def main():
             )
         )
     gaps = [run["gap_percent"] for case in small for run in case["aco_runs"]]
+    source_root = Path(__file__).resolve().parents[1]
     report = {
         "schema_version": 1,
         "config": vars(args),
         "workers": workers,
         "environment": {"python": platform.python_version(), "numpy": np.__version__},
         "source_sha256": {
-            str(p): hashlib.sha256(p.read_bytes()).hexdigest()
+            p.resolve().relative_to(source_root).as_posix(): hashlib.sha256(
+                p.read_bytes().replace(b"\r\n", b"\n")
+            ).hexdigest()
             for p in [
                 Path(__file__),
                 Path(__file__).with_name("reference.py"),
-                Path("src/seabed_planner/routing.py"),
-                Path("src/seabed_planner/anchors.py"),
+                source_root / "src/seabed_planner/routing.py",
+                source_root / "src/seabed_planner/anchors.py",
             ]
         },
         "elapsed_seconds": time.perf_counter() - started,

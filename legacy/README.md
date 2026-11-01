@@ -6,9 +6,9 @@ through `temp.mat` and `temp2.mat`. The original instruction document is stored 
 `original-instructions.docx`.
 
 [manifest.json](manifest.json) records the archive hash and each extracted file's SHA-256.
-Original file contents and notices are preserved. The repository's MIT grant covers the
-Python implementation and accompanying project materials; these original MATLAB files
-retain their existing licensing notices.
+Original file contents are preserved. The repository's MIT grant covers the Python
+implementation and accompanying project materials. License scope is recorded in
+[NOTICE](../NOTICE).
 
 `temp.mat` contains the 15-target example; `temp2.mat` contains its selected seven-target
 anchor group. Input units and portable dataset descriptions are in

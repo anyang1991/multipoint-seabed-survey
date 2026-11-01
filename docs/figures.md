@@ -14,7 +14,6 @@
 
 Figures use a white background, restrained grid lines, saturated group colors and a common
 font hierarchy. PNG export uses 300 dpi and also writes a companion SVG with editable text.
-Figure styling does not change mission data, routes or saved search histories.
 
 To redraw an existing report without rerunning the optimizer:
 

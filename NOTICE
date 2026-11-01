@@ -3,8 +3,8 @@ Copyright (c) 2026 Yang An
 
 The MIT license in LICENSE applies to the Python implementation, tests,
 examples, experiments, benchmarks and documentation in this repository.
-Original files under legacy/matlab/ retain their existing notices and are
-excluded from this license grant. Their provenance and checksums are recorded
+Original files under legacy/matlab/ are archived as supplied by the authors
+and are excluded from this license grant. Their provenance and checksums are recorded
 in legacy/README.md and legacy/manifest.json.
 
 Associated paper:
