@@ -1,6 +1,7 @@
 # Multipoint Seabed Survey Mission Planning
 
 [![Tests](https://github.com/anyang1991/multipoint-seabed-survey/actions/workflows/tests.yml/badge.svg)](https://github.com/anyang1991/multipoint-seabed-survey/actions/workflows/tests.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23852697.svg)](https://doi.org/10.5281/zenodo.23852697)
 [中文说明](README.zh-CN.md) · [Paper](https://anyang.space/publication/2017-auv-path-planning/) · [Citation](CITATION.cff) · [Releases](https://github.com/anyang1991/multipoint-seabed-survey/releases)
 
 Open-source Python software accompanying:
@@ -103,6 +104,10 @@ the joint objective is 18.90% lower on average. For ten 8-target fixed-anchor in
 | `docs/` | Method, reproduction and figure documentation |
 
 ## Citation and license
+
+Software archive: [version 0.1.1](https://doi.org/10.5281/zenodo.23852698).
+Use [10.5281/zenodo.23852697](https://doi.org/10.5281/zenodo.23852697) to cite the
+software across versions, or the version DOI for the archived release used in an experiment.
 
 Please cite the accompanying paper:
 

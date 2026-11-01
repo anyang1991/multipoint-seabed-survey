@@ -1,6 +1,7 @@
 # 多点海底调查任务路径规划
 
 [![自动测试](https://github.com/anyang1991/multipoint-seabed-survey/actions/workflows/tests.yml/badge.svg)](https://github.com/anyang1991/multipoint-seabed-survey/actions/workflows/tests.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23852697.svg)](https://doi.org/10.5281/zenodo.23852697)
 [English](README.md) · [论文主页](https://anyang.space/publication/2017-auv-path-planning/) · [引用信息](CITATION.cff) · [版本下载](https://github.com/anyang1991/multipoint-seabed-survey/releases)
 
 论文 **Path Planning for Multipoint Seabed Survey Mission Using Autonomous Underwater Vehicle**
@@ -74,6 +75,10 @@ python -m experiments.plot_evidence
 `benchmarks/` 为性能测试，`tests/` 为自动测试，`legacy/` 保存原 MATLAB 程序及来源记录。
 
 ## 引用与许可
+
+软件已归档至 Zenodo：[0.1.1 版本](https://doi.org/10.5281/zenodo.23852698)。
+引用软件项目可使用[所有版本 DOI](https://doi.org/10.5281/zenodo.23852697)；
+复现实验时，可使用对应归档版本的 DOI。
 
 使用本程序请引用论文，完整 BibTeX 见 [English README](README.md#citation-and-license)，
 机器可读引用见 [CITATION.cff](CITATION.cff)。
