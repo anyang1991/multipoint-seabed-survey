@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multipoint-seabed-survey"
+version = "0.1.0"
+description = "Open-source Python implementation accompanying An et al., OCEANS 2017: multipoint AUV seabed survey planning"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Yang An"}]
+license = "MIT"
+dependencies = ["numpy>=1.24", "scipy>=1.10", "matplotlib>=3.7", "psutil>=5.9", "threadpoolctl>=3.1"]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "ruff>=0.8"]
+gpu = ["cupy-cuda12x>=13"]
+gpu13 = ["cupy-cuda13x>=14"]
+
+[project.scripts]
+seabed-plan = "seabed_planner.cli:main"
+
+[project.urls]
+Repository = "https://github.com/anyang1991/multipoint-seabed-survey"
+Paper = "https://anyang.space/publication/2017-auv-path-planning/"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+

@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite our OCEANS 2017 paper."
+type: software
+title: "Multipoint Seabed Survey Mission Planning"
+version: 0.1.0
+date-released: 2026-11-01
+url: "https://github.com/anyang1991/multipoint-seabed-survey"
+authors:
+  - family-names: An
+    given-names: Yang
+preferred-citation:
+  type: conference-paper
+  title: "Path planning for multipoint seabed survey mission using autonomous underwater vehicle"
+  authors:
+    - family-names: An
+      given-names: Yang
+    - family-names: Xu
+      given-names: Gaofei
+    - family-names: Xu
+      given-names: Chunhui
+    - family-names: Zhao
+      given-names: Hongyu
+    - family-names: Liu
+      given-names: Jian
+  collection-title: "OCEANS 2017 - Anchorage"
+  year: 2017
+  start: 1
+  end: 5
+  url: "https://ieeexplore.ieee.org/document/8232284"

@@ -1,0 +1,81 @@
+{
+  "archive": "海阔天空程序.ZIP",
+  "archive_sha256": "4cf479eea9312bff48ef4424ba79fe6f0b9fb8b795f4fd4050580a742464d286",
+  "files": [
+    {
+      "file": "plotProgresskMeans.m",
+      "sha256": "92050646faeb39adfc10186cb1ef141275b243d0ce5d14257a24e4624f4ab2fa",
+      "bytes": 843
+    },
+    {
+      "file": "computeCentroids.m",
+      "sha256": "63c3665ac849f8626eb88f547af59e7486ede8a1771f5cf0ec60fbbac810e2b3",
+      "bytes": 1445
+    },
+    {
+      "file": "Circle.m",
+      "sha256": "ae4c89082dd2649fad1ff308df0c40c0ad37dad2c5b020553a5ebad963f216d0",
+      "bytes": 140
+    },
+    {
+      "file": "Stop_Selection.m",
+      "sha256": "37dd9acdd0908bc9efc071df20648a00593d15753f2e40a167cd0bb7abc6375b",
+      "bytes": 1230
+    },
+    {
+      "file": "runkMeans.m",
+      "sha256": "a5cbb9be914312eaf281c9a9ae1f18ae5a46d20ebf7d0ddc06d7000ce99a1a43",
+      "bytes": 2000
+    },
+    {
+      "file": "findClosestCentroids.m",
+      "sha256": "0aa60445c757e5578b77768934439969c6574fe1f1e68f9a526c3edf28533882",
+      "bytes": 784
+    },
+    {
+      "file": "plotDataPoints.m",
+      "sha256": "2888097d87671bbb55161ade354b7622bdff0d90b722377c9206800ff4a46158",
+      "bytes": 434
+    },
+    {
+      "file": "drawLine.m",
+      "sha256": "fee627fe8639f8b6d94c7946737fbcd99577d81dd0b7c689da60694f53af8afd",
+      "bytes": 232
+    },
+    {
+      "file": "Rectangle.m",
+      "sha256": "666b36456b425cfa590f9056bc7797963d1e4329419bbf7505e49feb9a2d86e6",
+      "bytes": 93
+    },
+    {
+      "file": "Kmeans.m",
+      "sha256": "15ab776643553a9379855dfd6350f369033194fa7501298b4fbc7938db8a1142",
+      "bytes": 2187
+    },
+    {
+      "file": "temp2.mat",
+      "sha256": "8c3a1f74c885fe963b9fdc969622afa2bef7e90371a63bb1567f09c1e15486ec",
+      "bytes": 553
+    },
+    {
+      "file": "Route_Finding.m",
+      "sha256": "e2cc42a6a43c37be9ebef7696fd19a9126404782c9dc42bee1e1e0111e0622bf",
+      "bytes": 7742
+    },
+    {
+      "file": "temp.mat",
+      "sha256": "7e8beec79acbdec0ee1b7e75ba74679fc4b250ecb85ebb0bee6bc4ccf7633c39",
+      "bytes": 2718
+    },
+    {
+      "file": "original-instructions.docx",
+      "sha256": "b4888964b8f090f7afe7d07d271de4e9efc93c9f2db33f4a18ff58af5c202ef3",
+      "bytes": 12246
+    },
+    {
+      "file": "Mapping_plus.m",
+      "sha256": "e8424ae4fd77453accb8894e6d713b4bcdc6c343cb840feedd30723548becb44",
+      "bytes": 5212
+    }
+  ]
+}

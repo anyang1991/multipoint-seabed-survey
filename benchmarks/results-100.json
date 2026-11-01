@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T04:05:35Z",
+  "mission": {
+    "generator": "seabed_planner.data.generate_mission",
+    "targets": 100,
+    "generation_seed": 2017,
+    "sha256_canonical_mission": "ca786e04ab3f246b03c29ab15e91bac092d9d7ce797ce0e364997195fad95767",
+    "dataset_reused_for_all_modes": true
+  },
+  "planner_config": {
+    "iterations": 100,
+    "ants": 30,
+    "planning_seed": 2017,
+    "warmup_runs_per_backend": 1,
+    "timed_repeats_per_backend": 3,
+    "timing_clock": "time.perf_counter",
+    "timed_scope": "Whole plan_mission call",
+    "cpu_serial": {
+      "parallel": false,
+      "backend": "cpu",
+      "requested_workers": null
+    },
+    "cpu_process": {
+      "parallel": true,
+      "backend": "cpu",
+      "requested_workers": 20,
+      "worker_detection": "os.cpu_count",
+      "forced_process_parallel": true
+    },
+    "gpu_opt_in": {
+      "enabled": true,
+      "backend": "gpu",
+      "processes": 1,
+      "parallel": false,
+      "requested_workers": null,
+      "cuda_sync_before_each_run": true,
+      "cuda_sync_after_each_run": true
+    }
+  },
+  "hardware": {
+    "cpu": {
+      "available": 20,
+      "logical": 20,
+      "physical": 20,
+      "affinity_supported": false
+    },
+    "memory": {
+      "total_bytes": 50844131328,
+      "available_bytes": 18628165632,
+      "percent_used": 63.4
+    },
+    "cuda": {
+      "available": true,
+      "device_count": 1,
+      "devices": [
+        {
+          "id": 0,
+          "name": "NVIDIA GeForce RTX 5070 Ti",
+          "total_memory_bytes": 17066033152,
+          "free_memory_bytes": 15767437312,
+          "compute_capability": "12.0"
+        }
+      ],
+      "cupy_version": "14.2.0",
+      "cuda_runtime_version": 13020,
+      "cuda_driver_version": 13040,
+      "probe_error": null
+    }
+  },
+  "environment": {
+    "python_version": "3.13.7",
+    "python_implementation": "CPython",
+    "python_build": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+    "executable": "C:\\Python313\\python.exe",
+    "command_arguments": [
+      "--targets",
+      "100",
+      "--iterations",
+      "100",
+      "--repeats",
+      "3",
+      "--gpu",
+      "--output",
+      "benchmarks/results-100.json"
+    ],
+    "versions": {
+      "multipoint_seabed_survey": "0.1.0",
+      "numpy": "2.3.2",
+      "scipy": "1.16.1",
+      "cupy": "14.2.0",
+      "psutil": "7.0.0",
+      "threadpoolctl": "3.6.0"
+    }
+  },
+  "modes": {
+    "cpu_serial": {
+      "runs": [
+        {
+          "run": 1,
+          "wall_seconds": 0.6997899999842048,
+          "reported_elapsed_seconds": 0.6977810999378562,
+          "backend": "cpu",
+          "workers": 1,
+          "anchor_count": 10,
+          "total_distance": 1208.8998273022212,
+          "total_dives": 52,
+          "validated": true
+        },
+        {
+          "run": 2,
+          "wall_seconds": 0.6924876999109983,
+          "reported_elapsed_seconds": 0.6907693000975996,
+          "backend": "cpu",
+          "workers": 1,
+          "anchor_count": 10,
+          "total_distance": 1208.8998273022212,
+          "total_dives": 52,
+          "validated": true
+        },
+        {
+          "run": 3,
+          "wall_seconds": 1.084962299792096,
+          "reported_elapsed_seconds": 1.0822666001040488,
+          "backend": "cpu",
+          "workers": 1,
+          "anchor_count": 10,
+          "total_distance": 1208.8998273022212,
+          "total_dives": 52,
+          "validated": true
+        }
+      ],
+      "median_wall_seconds": 0.6997899999842048,
+      "quality": {
+        "total_distance": 1208.8998273022212,
+        "total_dives": 52
+      }
+    },
+    "cpu_process": {
+      "runs": [
+        {
+          "run": 1,
+          "wall_seconds": 1.0332300998270512,
+          "reported_elapsed_seconds": 1.030644599813968,
+          "backend": "cpu",
+          "workers": 10,
+          "anchor_count": 10,
+          "total_distance": 1208.8998273022212,
+          "total_dives": 52,
+          "validated": true
+        },
+        {
+          "run": 2,
+          "wall_seconds": 1.044194299960509,
+          "reported_elapsed_seconds": 1.041270700050518,
+          "backend": "cpu",
+          "workers": 10,
+          "anchor_count": 10,
+          "total_distance": 1208.8998273022212,
+          "total_dives": 52,
+          "validated": true
+        },
+        {
+          "run": 3,
+          "wall_seconds": 1.0236220001243055,
+          "reported_elapsed_seconds": 1.020736200036481,
+          "backend": "cpu",
+          "workers": 10,
+          "anchor_count": 10,
+          "total_distance": 1208.8998273022212,
+          "total_dives": 52,
+          "validated": true
+        }
+      ],
+      "median_wall_seconds": 1.0332300998270512,
+      "speedup_vs_cpu_serial_median": 0.677283791965933,
+      "quality": {
+        "total_distance": 1208.8998273022212,
+        "total_dives": 52
+      },
+      "deterministic_group_routes_match_cpu_serial": true
+    },
+    "gpu": {
+      "runs": [
+        {
+          "run": 1,
+          "wall_seconds": 1.2700124999973923,
+          "reported_elapsed_seconds": 1.2671967998612672,
+          "backend": "gpu",
+          "workers": 1,
+          "anchor_count": 10,
+          "total_distance": 1201.438571995146,
+          "total_dives": 52,
+          "validated": true
+        },
+        {
+          "run": 2,
+          "wall_seconds": 1.2672470998950303,
+          "reported_elapsed_seconds": 1.2644893999677151,
+          "backend": "gpu",
+          "workers": 1,
+          "anchor_count": 10,
+          "total_distance": 1201.438571995146,
+          "total_dives": 52,
+          "validated": true
+        },
+        {
+          "run": 3,
+          "wall_seconds": 1.2694157999940217,
+          "reported_elapsed_seconds": 1.2668180000036955,
+          "backend": "gpu",
+          "workers": 1,
+          "anchor_count": 10,
+          "total_distance": 1201.438571995146,
+          "total_dives": 52,
+          "validated": true
+        }
+      ],
+      "median_wall_seconds": 1.2694157999940217,
+      "speedup_vs_cpu_serial_median": 0.5512693319143345,
+      "quality": {
+        "total_distance": 1201.438571995146,
+        "total_dives": 52
+      }
+    }
+  },
+  "distance_kernel_microbenchmark": {
+    "purpose": "Independent distance-matrix kernel comparison",
+    "not_whole_planner_speedup": true,
+    "points": 400,
+    "dtype": "float64",
+    "metric": "euclidean",
+    "seed": 2017,
+    "repeats": 3,
+    "timing_scope": "Kernel call, including output allocation",
+    "identical_by_allclose": true,
+    "allclose_rtol": 1e-12,
+    "allclose_atol": 1e-12,
+    "max_absolute_error": 0.0,
+    "scalar_python_n2": {
+      "implementation": "Nested scalar Python loops",
+      "per_run_seconds": [
+        0.10538309998810291,
+        0.10398090002126992,
+        0.10327329998835921
+      ],
+      "median_seconds": 0.10398090002126992
+    },
+    "scipy_cdist": {
+      "implementation": "scipy.spatial.distance.cdist",
+      "per_run_seconds": [
+        0.0004217000678181648,
+        0.00041390000842511654,
+        0.0004080000799149275
+      ],
+      "median_seconds": 0.00041390000842511654
+    },
+    "scalar_to_cdist_median_ratio": 251.22227084970527
+  }
+}
