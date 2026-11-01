@@ -1,6 +1,6 @@
 include CITATION.cff README.zh-CN.md CHANGELOG.md CONTRIBUTING.md NOTICE
 include requirements-reproduce.txt
-recursive-include docs *.md
+recursive-include docs *.md *.png *.svg
 recursive-include examples *.md *.json *.png *.svg
 recursive-include experiments *.py *.md *.json *.png *.svg
 recursive-include benchmarks *.py *.md *.json

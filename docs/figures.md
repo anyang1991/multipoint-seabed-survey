@@ -1,5 +1,27 @@
 # Figure design and export
 
+## Homepage workflow
+
+The homepage illustration reads from left to right: input targets, deployment/recovery
+anchor selection, and an enlarged view of the closed dives at one anchor. It uses the
+saved 100-target report: 10 anchors and 52 dives in total, with A1's seven targets and
+three dives shown in detail. Stars denote anchors; the middle panel colors targets by
+assigned anchor, while the detail colors routes by dive. Numbers in the detail are
+local target labels. Each dive's time includes travel and target work.
+
+Rebuild the English and Chinese PNG/SVG pairs without rerunning the optimizer:
+
+```bash
+python -m experiments.plot_overview
+python -m experiments.plot_overview --language zh --output docs/assets/planning-workflow-zh.png
+```
+
+Exports are in [`docs/assets/`](assets/). Chinese rendering requires Microsoft YaHei,
+Noto Sans CJK SC or SimHei. The two full-map panels share the same coordinate scale;
+the final panel is a local enlargement. Coordinates come directly from the saved plan.
+
+## Detailed result figures
+
 `plot_plan(report, output)` produces a coordinated three-panel scientific overview:
 
 - **Spatial plan:** equal coordinate scale, consistent group colors, direction arrows,

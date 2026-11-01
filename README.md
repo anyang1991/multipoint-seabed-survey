@@ -14,7 +14,12 @@ greedy reduction select support-vessel anchors; ant-colony routing assigns close
 within endurance and sample-capacity constraints. It provides automatic CPU/GPU selection,
 parallel execution, reproducible experiments, and publication-quality figures.
 
-![100-target mission plan](examples/results/paper-style-100.png)
+![Two-stage planning: 100 survey targets, 10 deployment/recovery anchors, and three closed dives at anchor A1](docs/assets/planning-workflow.png)
+
+Read from left to right: survey targets → anchor selection → dive routing. Stars mark
+deployment/recovery anchors; the right panel enlarges A1 and uses one color per dive.
+This saved example has 52 dives across all 10 anchors; three are shown in the detail.
+[Detailed figures and export instructions](docs/figures.md).
 
 ## Install and run
 
