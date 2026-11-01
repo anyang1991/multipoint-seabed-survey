@@ -1,0 +1,13 @@
+Multipoint Seabed Survey Mission Planning
+Copyright (c) 2026 Yang An
+
+The MIT license in LICENSE applies to the Python implementation, tests,
+examples, experiments, benchmarks and documentation in this repository.
+Original files under legacy/matlab/ retain their existing notices and are
+excluded from this license grant. Their provenance and checksums are recorded
+in legacy/README.md and legacy/manifest.json.
+
+Associated paper:
+Yang An, Gaofei Xu, Chunhui Xu, Hongyu Zhao, Jian Liu.
+Path Planning for Multipoint Seabed Survey Mission Using Autonomous
+Underwater Vehicle. OCEANS 2017 - Anchorage, 2017, pp. 1-5.

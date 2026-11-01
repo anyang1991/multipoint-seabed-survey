@@ -1,17 +1,15 @@
-# Supplied MATLAB source
+# Original MATLAB program
 
-`matlab/` is extracted from the author-supplied `海阔天空程序.ZIP`, a small modification of
-the paper's program. Original file bytes are preserved. The Chinese instruction document
-has been renamed `original-instructions.docx`; its text identifies `Mapping_plus` as the
-first stage, followed by `Stop_Selection`.
+`matlab/` preserves the files from the authors' `海阔天空程序.ZIP` archive.
+The workflow is `Mapping_plus.m` → `Stop_Selection.m` → `Route_Finding.m`, with data passed
+through `temp.mat` and `temp2.mat`. The original instruction document is stored as
+`original-instructions.docx`.
 
-Typical workflow: `Mapping_plus.m` → `Stop_Selection.m` → `Route_Finding.m`.
-The scripts communicate using `temp.mat` and `temp2.mat`, require MATLAB plotting and image
-processing functions, and plan the largest anchor group in the supplied modified workflow.
+[manifest.json](manifest.json) records the archive hash and each extracted file's SHA-256.
+Original file contents and notices are preserved. The repository's MIT grant covers the
+Python implementation and accompanying project materials; these original MATLAB files
+retain their existing licensing notices.
 
-Some K-means helper files contain educational exercise comments. Their notices are preserved;
-the repository's new MIT grant does not relicense these legacy files. The independently
-implemented Python package does not import or execute them.
-
-`temp.mat` contains 15 targets with workload and integer sample demand. `temp2.mat` contains
-one selected seven-target anchor group. Neither is the paper's original 100-target simulation.
+`temp.mat` contains the 15-target example; `temp2.mat` contains its selected seven-target
+anchor group. Input units and portable dataset descriptions are in
+[examples/README.md](../examples/README.md).

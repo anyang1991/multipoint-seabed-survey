@@ -1,7 +1,6 @@
 # Benchmarks
 
-`benchmark.py` measures the current Python planner on one seeded generated mission. It
-does not compare against MATLAB and does not replace correctness tests.
+`benchmark.py` measures complete Python mission planning on a seeded generated mission.
 
 ## Run
 

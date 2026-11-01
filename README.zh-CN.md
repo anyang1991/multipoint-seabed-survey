@@ -1,88 +1,77 @@
 # 多点海底调查任务路径规划
 
-这是我们论文 **Path Planning for Multipoint Seabed Survey Mission Using Autonomous Underwater
-Vehicle**（Yang An、Gaofei Xu、Chunhui Xu、Hongyu Zhao、Jian Liu，OCEANS 2017 - Anchorage）
-的开源程序。基于作者提供的 `海阔天空程序.ZIP` 小修改版 MATLAB 程序，重新整理为 Python 项目。
+[![自动测试](https://github.com/anyang1991/multipoint-seabed-survey/actions/workflows/tests.yml/badge.svg)](https://github.com/anyang1991/multipoint-seabed-survey/actions/workflows/tests.yml)
+[English](README.md) · [论文主页](https://anyang.space/publication/2017-auv-path-planning/) · [引用信息](CITATION.cff) · [版本下载](https://github.com/anyang1991/multipoint-seabed-survey/releases)
 
-[论文主页](https://anyang.space/publication/2017-auv-path-planning/) ·
-[论文 PDF](https://anyang.space/files/IEEE-OCEANS-2017-1.pdf) · [English](README.md)
+论文 **Path Planning for Multipoint Seabed Survey Mission Using Autonomous Underwater Vehicle**
+的配套开源程序，作者为 Yang An、Gaofei Xu、Chunhui Xu、Hongyu Zhao、Jian Liu，发表于 OCEANS 2017 - Anchorage。
 
-## 论文结论复核
+程序采用两阶段框架：通过迭代 K-means 和贪心删点确定支撑船锚点，再用蚁群算法规划满足续航与采样容量约束的闭合下潜路径。
+提供 CPU/GPU 自动适配、多进程计算、可复现实验及论文插图导出。
 
-新增 12 个独立的 100 点任务、每个 3 个搜索种子的对照实验：36 次全部满足资源约束，
-相对受约束最近邻策略，联合目标值平均降低 **18.90%**。10 个 8 点实例的 30 次搜索中，
-22 次达到固定锚点精确最优，平均差距 **0.43%**。
-
-复核围绕两阶段任务规划框架展开，覆盖锚点减少、目标可达、资源约束和完整任务代价；
-蚁群算法作为路径求解工具。详见 [完整复核报告与对照图](docs/validation.zh-CN.md)。
+![100点任务规划示例](examples/results/paper-style-100.png)
 
 ## 安装与运行
+
+需要 Python 3.10 及以上：
 
 ```bash
 git clone https://github.com/anyang1991/multipoint-seabed-survey.git
 cd multipoint-seabed-survey
-python -m pip install -e ".[test]"
-python -m seabed_planner hardware
-python -m seabed_planner plan examples/legacy-15.json --output outputs/legacy.json --plot outputs/legacy.png
-python -m seabed_planner validate outputs/legacy.json
-python -m seabed_planner plan examples/paper-style-100.json --output outputs/survey.json --plot outputs/survey.png
+python -m pip install -e .
+python -m seabed_planner plan examples/paper-style-100.json --output outputs/plan.json --plot outputs/plan.png
+python -m seabed_planner validate outputs/plan.json
 ```
 
-需要 Python 3.10 及以上。基础安装即可使用 CPU。CUDA 12 环境可额外安装
-`python -m pip install -e ".[gpu]"`；CUDA 13 环境使用 `python -m pip install -e ".[gpu13]"`。
-同一环境只安装一种 CuPy，具体要求参见 [CuPy 官方说明](https://docs.cupy.dev/en/stable/install.html)。
+结果包含完整输入、锚点、下潜路径、搜索历史、参数、随机种子和运行信息。
+图件导出为 300 dpi PNG，并附可编辑 SVG。
 
-绘图采用统一的论文插图风格，展示路径与锚点、相对收敛进展、逐次下潜的航行/作业时间和采样容量。
-PNG 为 300 dpi，同时导出可编辑的 SVG；已有 JSON 结果可直接重新绘图。[绘图说明](docs/figures.md)
-
-## 算法与改进
-
-1. 根据续航、航速和各目标点作业时间，用迭代 K-means 和贪心删点选择支撑船锚点。
-2. 对每个锚点负责的全部目标点，用蚁群算法优化多次下潜的闭合路径。
-3. 独立复核每个目标恰好访问一次，并逐次检查下潜的往返航行时间、作业时间和采样容量。
-
-已补齐原修改版路径搜索遗漏的作业时间扣除、出发时可行性检查和完整任务规划。
-默认采用论文的距离与下潜次数联合目标 `总航程 × 下潜次数^κ`（κ=2），而原修改版主要优化航程。
-锚点初始化采用稀疏的非空网格，避免为整个海域创建逐像素矩阵；聚类移动和删点均检查实际覆盖约束。
-算法仍属于启发式方法，不保证全局最优。[具体差异](docs/method.md)有逐项说明。
-
-## 加速与自动适配
-
-- 距离矩阵、最近锚点分配及蚁群候选筛选均使用批量运算。
-- 自动读取当前进程可用 CPU 数、物理核心、内存和可用 CUDA 设备。
-- 不同锚点可分配到多个进程并行计算，限制每个进程内部的数值库线程数。
-- 小任务自动保持串行；可通过 `--workers 4` 指定并行规模，或 `--serial` 强制串行。
-- 可通过 `--backend gpu` 使用 CuPy/CUDA。GPU 执行蚁群数值计算；锚点选择仍使用 CPU。
-  蚂蚁路径构建合并到 CUDA 计算内核中，减少逐步调用和同步开销。
-  自动模式对 GPU 使用保守阈值，避免小数据因启动和调度开销变慢。
-- CPU 串行与并行使用稳定的逐锚点随机种子；相同环境与参数可得到相同结果。
-  GPU 随机数实现不同，路径可以不同，但同样必须通过可行性检查。
+## 计算设置
 
 ```bash
+python -m seabed_planner hardware
 python -m seabed_planner plan examples/paper-style-100.json --backend cpu --workers 4
 python -m seabed_planner plan examples/paper-style-100.json --backend gpu
-python benchmarks/benchmark.py --targets 100 --iterations 100 --repeats 3 --gpu
-python benchmarks/benchmark_colony.py
-python -m pytest -q
+python -m seabed_planner generate --targets 100 --seed 2017 --output outputs/mission.json
 ```
 
-[性能说明](docs/performance.md)记录实测条件和结果。距离矩阵的微基准加速倍数与完整规划加速倍数分开报告；
-原 MATLAB 修改版与新实现的约束逻辑不同，因此不把它们的运行时间直接作为等价算法加速比较。
+默认根据任务规模、可用 CPU、内存和 CUDA 设备选择计算方式及进程数。
+GPU 环境可按 CUDA 版本选择安装 `.[gpu]`（CUDA 12）或 `.[gpu13]`（CUDA 13）。
+[计算与性能说明](docs/performance.md)记录适配策略和实测结果。
 
-本机实测：100 点、500 次迭代的完整规划由 CPU 多进程加速约 **3.02 倍**；
-40 点、2048 只蚂蚁的单锚点算例由 GPU 加速约 **15.96 倍**。
-小批次的普通算例仍优先使用 CPU。各项结果均保留三次计时和可行性验证记录。
+## 模型与数据
 
-## 数据和结果
+每次下潜从所属锚点出发并返回，每个目标恰好访问一次。航行与作业总时间受续航约束，样本总数受采样容量约束。
+各锚点采用 `航程 × 下潜次数²` 的联合目标，默认搜索 500 次迭代、每次 30 只蚂蚁。
+模型采用恒速、平面距离与固定目标作业时间。[方法与参数](docs/method.md)
 
-- `examples/legacy-15.json`：原压缩包 `temp.mat` 的 15 点数据，续航 8 小时、航速 7.2 距离单位/小时。
-- `examples/paper-style-100.json`：新生成的 100 点带状分布示例，续航 40 小时、航速 1 海里/小时、容量 3。
-  原论文绘图使用的 100 点随机数据不在该压缩包中，因此本示例不是论文图的逐点重现。
-- 支持 JSON、CSV 和原始 MATLAB `.mat` 输入；CSV 字段为 `x,y,workload_hours,samples`。
-- 坐标采用统一单位的平面直角坐标，航速单位与之配套；经纬度应先投影。时间单位为小时。
-- 保存的 JSON 包含完整输入、参数、随机种子、路径、收敛曲线、硬件和耗时；路径中的目标编号从 0 开始。
-  每条路径隐含从所属锚点出发并返回。
-- `legacy/matlab/` 保留原文件供对照，`CITATION.cff` 提供论文引用信息。
+支持 JSON、CSV 和 MATLAB `.mat` 输入。目标字段为 `x,y,workload_hours,samples`；
+时间单位为小时，坐标与航速使用配套的距离单位。保存的目标编号从 0 开始。
+[数据来源与输入格式](examples/README.md)
 
-新 Python 实现、测试、示例和文档采用 MIT 许可证。原 MATLAB 文件保留原有声明，详见
-[LICENSE](LICENSE) 和 [来源说明](legacy/README.md)。
+## 实验复现
+
+```bash
+python -m pip install -e ".[test]"
+python -m pytest -q
+python -m experiments.verify_claims
+python -m experiments.plot_evidence
+```
+
+验证包含 12 个独立的 100 点任务、每个任务 3 个搜索种子，36 次规划全部满足约束。
+相对受约束最近邻策略，联合目标值平均降低 **18.90%**。10 个 8 点固定锚点实例的 30 次搜索中，
+22 次达到精确最优，平均目标差距 **0.43%**。
+
+[复现指南](docs/reproducibility.md) · [实验结果与方案](docs/validation.zh-CN.md) · [绘图说明](docs/figures.md)
+
+## 项目结构
+
+`src/` 为 Python 程序，`examples/` 为输入和规划结果，`experiments/` 为验证实验及原始数据，
+`benchmarks/` 为性能测试，`tests/` 为自动测试，`legacy/` 保存原 MATLAB 程序及来源记录。
+
+## 引用与许可
+
+使用本程序请引用论文，完整 BibTeX 见 [English README](README.md#citation-and-license)，
+机器可读引用见 [CITATION.cff](CITATION.cff)。
+Python 实现、测试、示例和文档采用 [MIT 许可证](LICENSE)；原 MATLAB 文件保留原有声明。
+问题反馈与贡献方式见 [CONTRIBUTING.md](CONTRIBUTING.md)。

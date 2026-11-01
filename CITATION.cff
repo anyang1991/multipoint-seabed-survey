@@ -2,7 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software, please cite our OCEANS 2017 paper."
 type: software
 title: "Multipoint Seabed Survey Mission Planning"
-version: 0.1.0
+version: 0.1.1
+license: MIT
 date-released: 2026-11-01
 url: "https://github.com/anyang1991/multipoint-seabed-survey"
 authors:
