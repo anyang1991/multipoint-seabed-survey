@@ -7,6 +7,15 @@ Vehicle**（Yang An、Gaofei Xu、Chunhui Xu、Hongyu Zhao、Jian Liu，OCEANS 2
 [论文主页](https://anyang.space/publication/2017-auv-path-planning/) ·
 [论文 PDF](https://anyang.space/files/IEEE-OCEANS-2017-1.pdf) · [English](README.md)
 
+## 论文结论复核
+
+新增 12 个独立的 100 点任务、每个 3 个搜索种子的对照实验：36 次全部满足资源约束，
+相对受约束最近邻策略，联合目标值平均降低 **18.90%**。10 个 8 点实例的 30 次搜索中，
+22 次达到固定锚点精确最优，平均差距 **0.43%**。
+
+复核围绕两阶段任务规划框架展开，覆盖锚点减少、目标可达、资源约束和完整任务代价；
+蚁群算法作为路径求解工具。详见 [完整复核报告与对照图](docs/validation.zh-CN.md)。
+
 ## 安装与运行
 
 ```bash
@@ -22,6 +31,9 @@ python -m seabed_planner plan examples/paper-style-100.json --output outputs/sur
 需要 Python 3.10 及以上。基础安装即可使用 CPU。CUDA 12 环境可额外安装
 `python -m pip install -e ".[gpu]"`；CUDA 13 环境使用 `python -m pip install -e ".[gpu13]"`。
 同一环境只安装一种 CuPy，具体要求参见 [CuPy 官方说明](https://docs.cupy.dev/en/stable/install.html)。
+
+绘图采用统一的论文插图风格，展示路径与锚点、相对收敛进展、逐次下潜的航行/作业时间和采样容量。
+PNG 为 300 dpi，同时导出可编辑的 SVG；已有 JSON 结果可直接重新绘图。[绘图说明](docs/figures.md)
 
 ## 算法与改进
 

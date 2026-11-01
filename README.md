@@ -19,6 +19,12 @@ constraint validation, seeded experiments, CPU process parallelism, batched vect
 and optional CUDA execution. See [method and migration notes](docs/method.md) for the exact
 differences from the paper and the supplied program.
 
+Scientific checks cover the two-stage planning framework: 12 independent 100-target
+missions × 3 search seeds, anchor-count reduction, resource feasibility, fixed-anchor
+nearest-neighbor and single-target-dive baselines, and exact 8-target references. All
+full missions are feasible; the joint objective is 18.90% lower than nearest neighbor on
+average. See the [validation report and figures](docs/validation.zh-CN.md).
+
 ![Validated 100-target example: anchor locations, dive routes and convergence](examples/results/paper-style-100.png)
 
 ## Install
